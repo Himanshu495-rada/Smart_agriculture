@@ -1,0 +1,38 @@
+Smart_agriculture Android app explaination:-
+1. This app is developed by using React Native.
+2. We are fetching data from the server and displaying it in the app.
+3. In folder main code is available in App.js file
+4. When app is turned on all parameters are set to 0 bydefault.
+5. In App.js file we are using the following components:- useState, useEffect
+6. useState is used to set the value of the state.
+7. useEffect is used to fetch the data from the server.
+8. In useEffect component we are fetching data from the server and displaying it in the app after every 2 seconds
+9. And all the latest vales are chaged on app using useState component.
+10. Default font color of values are white, after they reach certain limits they are changed to red.
+
+Hardware code explaination:- 
+1. We are using the following hardware components:- 
+        BMP280 (Pressure sensor),
+	    DHT11 (Temperature, Humidity sensor),
+	    PIR sensor,
+		LDR (light sensitivity),
+		ATmega328p (microcontroller),
+		MQ135 (CO2 sensor),
+		Soil moisture sensor,
+2. Hardware code is done in arduino IDE
+3. In arduino code first we set all the pins of components and set new serial port for GSM module.
+4. In void setup() function we are setting the pins of the components and displaying welcome message on oled screen.
+5. In void loop() first we display all the hardware values on oled screen.
+6. Then all those values are sent to the API using GSM module in sendData() function.
+7. In sendData() function we set the functions of the GSM using AT commands as follows:- 
+    i) AT+SAPBR=1,1 //Set bearer profile
+    ii) AT+SAPBR=2,1 //Set bearer profile
+    iii) AT+HTTPINIT //Initialize HTTP
+    iv) AT+HTTPPARA="CID",1 //Set HTTP parameters
+    v) AT+HTTPPARA="URL","link = "http://htsingh.pythonanywhere.com/setData?data=" //Set HTTP parameters
+    vi) AT+HTTPDATA=0,10000 //Set HTTP data
+    vii) AT+HTTPACTION=1 //Send HTTP data
+    viii) AT+HTTPTERM //Terminate HTTP
+    ix) AT+SAPBR=0,1 //Close bearer profile
+8. Display data sent confirmation message on oled screen.
+
